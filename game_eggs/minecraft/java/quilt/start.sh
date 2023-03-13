@@ -3,7 +3,6 @@ if [ ! -f {{SERVER_JARFILE}} ]; then
 	echo "{{SERVER_JARFILE}} does not exist, attempting to install"
 fi
 
-
 echo "Checking if {{SERVER_JARFILE}} exists"
 if [ ! -f {{SERVER_JARFILE}} ]; then
 	echo "{{SERVER_JARFILE}} does not exist, attempting to install"

@@ -7,7 +7,7 @@ fi
 echo "Checking if {{SERVER_JARFILE}} exists"
 if [ ! -f {{SERVER_JARFILE}} ]; then
 	echo "{{SERVER_JARFILE}} does not exist, attempting to install"
-	if [!( -f quilt-installer-{{BUILD_NUMBER}}.jar )]; then
+	if [! -f quilt-installer-{{BUILD_NUMBER}}.jar ]; then
 		echo "Invalid install! Please reinstall your server!"
 		exit 1
 	fi

@@ -2,20 +2,18 @@
 # Quilt Installation Script
 #
 # Server Files: /mnt/server
-PROJECT=paper
 
 if [ -n "${DL_PATH}" ]; then
     echo -e "Using supplied download url: ${DL_PATH}"
     DOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
 else
-    #I am leaving this the same as I will assume that Quilt uses the same minecraft versions as PaperMC
-    VER_EXISTS=`curl -s https://api.papermc.io/v2/projects/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions[] | contains($VERSION)' | grep -m1 true`
-    LATEST_VERSION=`curl -s https://api.papermc.io/v2/projects/${PROJECT} | jq -r '.versions' | jq -r '.[-1]'`
+    VER_EXISTS=`curl -s https://meta.fabricmc.net/v2/versions/game | jq -r --arg VERSION ${MINECRAFT_VERSION} '.[] | .version | contains($VERSION)' | grep -m1 true`
+    LATEST_VERSION=`curl -s https://meta.fabricmc.net/v2/versions/game | jq -r '[.[] | select(.stable == true)][0] | .version'`
 
     if [ "${VER_EXISTS}" == "true" ]; then
         echo -e "Version is valid. Using version ${MINECRAFT_VERSION}"
     else
-        echo -e "Specified version not found. Defaulting to the latest ${PROJECT} version"
+        echo -e "Specified version not found, or specified version was 'latest'. Defaulting to the latest quilt version"
         MINECRAFT_VERSION=${LATEST_VERSION}
     fi
 

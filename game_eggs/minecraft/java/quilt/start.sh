@@ -1,6 +1,7 @@
 SERVER_JARFILE=$1
-MINECRAFT_VERSION=$2
-BUILD_NUMBER=$3
+SERVER_MEMORY=$2
+MINECRAFT_VERSION=$3
+BUILD_NUMBER=$4
 echo "Checking if ${SERVER_JARFILE} exists"
 if ! [ -f ${SERVER_JARFILE} ]; then
 	echo "${SERVER_JARFILE} does not exist, attempting to install"
@@ -21,4 +22,4 @@ if ! [ -f ${SERVER_JARFILE} ]; then
 	echo "Installtion succeeded, attempting to start the server!"
 fi
 echo "Server jar exists, starting server!"
-java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar ${SERVER_JARFILE}
+java -Xms128M -Xmx${SERVER_MEMORY}M -Dterminal.jline=false -Dterminal.ansi=true -jar ${SERVER_JARFILE} nogui

@@ -29,7 +29,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "bash <(curl -s https://raw.githubusercontent.com/Plasmaman916/eggs/master/game_eggs/minecraft/java/quilt/setup.sh)",
+            "script": "ash <(curl -s https://raw.githubusercontent.com/Plasmaman916/eggs/master/game_eggs/minecraft/java/quilt/setup.sh)",
             "container": "ghcr.io\/pterodactyl\/installers:alpine",
             "entrypoint": "ash"
         }

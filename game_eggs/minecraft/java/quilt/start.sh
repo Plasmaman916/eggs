@@ -16,6 +16,7 @@ if ! [ -f ${SERVER_JARFILE} ]; then
 	echo -e "Running java -jar quilt-installer-${BUILD_NUMBER}.jar install server ${MINECRAFT_VERSION} --download-server"
 	java -jar quilt-installer-${BUILD_NUMBER}.jar install server ${MINECRAFT_VERSION} --download-server
 	mv ./server/* ./
+	rm -r ./server
 
 	echo "Installtion succeeded, attempting to start the server!"
 fi

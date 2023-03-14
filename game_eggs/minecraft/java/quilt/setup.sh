@@ -20,7 +20,7 @@ else
     BUILD_EXISTS=`curl -s https://meta.quiltmc.org/v3/versions/installer | jq -r --arg VERSION ${BUILD_NUMBER} '.[] | .version | contains($VERSION)' | grep -m1 true`
     LATEST_BUILD=`curl -s https://meta.quiltmc.org/v3/versions/installer | jq -r '.[0] | .version '`
 
-    if [ "${BUILD_EXISTS}" == "true" ||  "${BUILD_NUMBER}" == "latest"]; then
+    if [ "${BUILD_EXISTS}" == "true" ] || [ "${BUILD_NUMBER}" == "latest" ]; then
         echo -e "Build is valid for version using build ${BUILD_NUMBER}"
     else
         echo -e "Using the latest build for Quilt"

@@ -20,7 +20,7 @@ else
     BUILD_EXISTS=`curl -s https://meta.quiltmc.org/v3/versions/installer | jq -r --arg VERSION ${BUILD_NUMBER} '.[] | .version | contains($VERSION)' | grep -m1 true`
     LATEST_BUILD=`curl -s https://meta.quiltmc.org/v3/versions/installer | jq -r '.[0] | .version '`
 
-    if [ "${BUILD_EXISTS}" == "true" ]; then
+    if [ "${BUILD_EXISTS}" == "true" ||  "${BUILD_NUMBER}" == "latest"]; then
         echo -e "Build is valid for version using build ${BUILD_NUMBER}"
     else
         echo -e "Using the latest build for Quilt"
@@ -30,8 +30,8 @@ else
 
     JAR_NAME=quilt-installer-${BUILD_NUMBER}.jar
     echo "Version being downloaded"
-    echo -e "Build: ${BUILD_NUMBER}"
-    echo -e "JAR Name of Build: ${JAR_NAME}"
+    echo -e "    Build: ${BUILD_NUMBER}"
+    echo -e "    JAR Name of Build: ${JAR_NAME}"
     DOWNLOAD_URL=https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${BUILD_NUMBER}/${JAR_NAME}
 fi
 

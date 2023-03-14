@@ -6,7 +6,7 @@ echo "Checking if ${SERVER_JARFILE} exists"
 if ! [ -f ${SERVER_JARFILE} ]; then
 	echo "${SERVER_JARFILE} does not exist, attempting to install"
 	if ! [ -f quilt-installer-${BUILD_NUMBER}.jar ]; then
-    	echo "$quilt-installer-${BUILD_NUMBER}.jar does not exist"
+    	echo "quilt-installer-${BUILD_NUMBER}.jar does not exist"
         BUILD_NUMBER=latest
         echo "attempting lastest (quilt-installer-${BUILD_NUMBER}.jar)"
 		if ! [ -f quilt-installer-${BUILD_NUMBER}.jar ]; then

@@ -24,7 +24,7 @@ else
         echo -e "Build is valid for version using build ${BUILD_NUMBER}"
     else
         echo -e "Using the latest build for Quilt"
-        BUILD_NUMBER=LATEST_BUILD
+        BUILD_NUMBER=${LATEST_BUILD}
     fi
 
 

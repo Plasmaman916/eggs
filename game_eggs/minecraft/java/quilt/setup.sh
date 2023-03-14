@@ -13,7 +13,7 @@ else
     if [ "${VER_EXISTS}" == "true" ]; then
         echo -e "Version is valid. Using version ${MINECRAFT_VERSION}"
     else
-        echo -e "Specified version not found, or specified version was 'latest'. Defaulting to the latest quilt version"
+        echo -e "Specified version not found, or specified version was 'latest'. Defaulting to the latest quilt version: ${LATEST_VERSION}"
         MINECRAFT_VERSION=${LATEST_VERSION}
     fi
 
